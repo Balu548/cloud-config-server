@@ -1,10 +1,19 @@
-spring.application.name=CloudConfigServer
-
-# H2 Database URL
-spring.datasource.url=jdbc:h2:mem:testdb
-
-# Driver class
-spring.datasource.driverClassName=org.h2.Driver
-
-# Dialect for Hibernate
-spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+    
+    
+microservice:
+  payment-service:
+    endpoints:
+      endpoint:
+        uri: http://PAYMENT-SERVICE/payment/doPayment
+  order-service:
+    endpoints:
+      endpoint:
+        uri: http://ORDER-SERVICE/order/bookOrder    
